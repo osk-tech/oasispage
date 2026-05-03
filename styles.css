@@ -86,7 +86,7 @@
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--white);
+      color: inherit;
     }
 
     .eyebrow::before {
@@ -578,97 +578,6 @@
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 32px;
-    }
-
-    .gallery-counter {
-      flex-shrink: 0;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text-soft);
-      white-space: nowrap;
-    }
-
-    .gallery-carousel {
-      position: relative;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding: 4px max(16px, calc((100vw - min(1180px, calc(100vw - 32px))) / 2)) 24px;
-    }
-
-    .carousel-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .carousel-slide {
-      flex: 0 0 min(calc(100vw - 80px), 320px);
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border-radius: 18px;
-      background: var(--surface-dark);
-      margin: 0;
-      scroll-snap-align: start;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 400ms ease;
-    }
-
-    .carousel-slide:hover img {
-      transform: scale(1.04);
-    }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(calc(-50% - 12px));
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: none;
-      background: var(--surface-dark);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-      transition: background var(--transition), opacity var(--transition), transform 200ms ease;
-      z-index: 2;
-    }
-
-    .carousel-btn svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .carousel-btn:hover {
-      background: var(--brand);
-      transform: translateY(calc(-50% - 12px)) scale(1.08);
-    }
-
-    .carousel-btn:disabled {
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .carousel-btn--prev {
-      left: max(8px, calc((100vw - min(1180px, calc(100vw - 32px))) / 2 - 24px));
-    }
-
-    .carousel-btn--next {
-      right: max(8px, calc((100vw - min(1180px, calc(100vw - 32px))) / 2 - 24px));
     }
 
     .gallery-cta {
@@ -1172,10 +1081,6 @@
 
     @media (min-width: 680px) {
 
-      .carousel-slide {
-        flex: 0 0 320px;
-      }
-
       .essence-grid,
       .tours-grid,
       .reviews-grid,
@@ -1231,10 +1136,6 @@
 
       .rooms-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .carousel-slide {
-        flex: 0 0 380px;
       }
 
       .amenities-grid {
@@ -1308,6 +1209,9 @@
       position: fixed;
       top: 20px;
       right: 30px;
+      padding: 0;
+      border: 0;
+      background: transparent;
       color: #fff;
       font-size: 40px;
       font-weight: bold;
@@ -1320,6 +1224,13 @@
 
     .modal-close:hover {
       color: #ccc;
+    }
+
+    .modal-close:focus-visible,
+    .modal-nav:focus-visible,
+    .room-media img:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 4px;
     }
 
     .modal-nav {

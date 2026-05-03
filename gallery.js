@@ -15,6 +15,7 @@ function initGallery() {
 
   let activeImages = [];
   let currentIndex = 0;
+  let lastTrigger = null;
 
   function updateModalImage() {
     const currentImage = activeImages[currentIndex];
@@ -30,14 +31,32 @@ function initGallery() {
     updateModalImage();
     modal.classList.add('modal-active');
     document.body.style.overflow = 'hidden';
+    closeBtn.focus();
   }
 
   roomGalleries.forEach((images) => {
     const coverImage = images[0];
     if (!coverImage) return;
 
+    coverImage.setAttribute('tabindex', '0');
+    coverImage.setAttribute('role', 'button');
+    coverImage.setAttribute('aria-haspopup', 'dialog');
+    coverImage.setAttribute(
+      'aria-label',
+      coverImage.alt ? `Abrir galeria: ${coverImage.alt}` : 'Abrir galeria de la habitacion'
+    );
+
     coverImage.addEventListener('click', () => {
+      lastTrigger = coverImage;
       openGallery(images);
+    });
+
+    coverImage.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        lastTrigger = coverImage;
+        openGallery(images);
+      }
     });
   });
 
@@ -61,6 +80,7 @@ function initGallery() {
   function closeModal() {
     modal.classList.remove('modal-active');
     document.body.style.overflow = '';
+    lastTrigger?.focus();
   }
 
   closeBtn.addEventListener('click', closeModal);

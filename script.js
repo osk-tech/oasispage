@@ -44,51 +44,6 @@ if (currentYear) {
   currentYear.textContent = String(new Date().getFullYear());
 }
 
-// ── Gallery Carousel ────────────────────────────────────
-(function initGalleryCarousel() {
-  const track = document.getElementById('gallery-track');
-  const prevBtn = document.getElementById('gallery-prev');
-  const nextBtn = document.getElementById('gallery-next');
-  const counter = document.getElementById('gallery-counter');
-  if (!track) return;
-
-  const slides = Array.from(track.querySelectorAll('.carousel-slide'));
-  const total = slides.length;
-  if (counter) counter.textContent = `1 / ${total}`;
-
-  function getSlideWidth() {
-    const gap = parseInt(getComputedStyle(track).gap) || 12;
-    return (slides[0]?.offsetWidth || 0) + gap;
-  }
-
-  function getCurrentIndex() {
-    const sw = getSlideWidth();
-    return sw > 0 ? Math.round(track.scrollLeft / sw) : 0;
-  }
-
-  function scrollToIndex(idx) {
-    const sw = getSlideWidth();
-    track.scrollTo({ left: idx * sw, behavior: 'smooth' });
-  }
-
-  function updateState() {
-    const atStart = track.scrollLeft <= 4;
-    const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
-    if (prevBtn) prevBtn.disabled = atStart;
-    if (nextBtn) nextBtn.disabled = atEnd;
-    if (counter) {
-      const sw = getSlideWidth();
-      const idx = sw > 0 ? Math.round(track.scrollLeft / sw) : 0;
-      counter.textContent = `${idx + 1} / ${total}`;
-    }
-  }
-
-  nextBtn?.addEventListener('click', () => scrollToIndex(Math.min(getCurrentIndex() + 1, total - 1)));
-  prevBtn?.addEventListener('click', () => scrollToIndex(Math.max(getCurrentIndex() - 1, 0)));
-  track.addEventListener('scroll', updateState, { passive: true });
-  updateState();
-})();
-
 const roomTabs = Array.from(document.querySelectorAll(".room-tab"));
 const roomCards = Array.from(document.querySelectorAll(".room-card[data-room-type]"));
 
