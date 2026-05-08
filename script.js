@@ -5,7 +5,7 @@ const siteConfig = {
   phonePrimary: "+502 4091-7878",
   phoneSecondary: "+502 4888-7300",
   email: "lanquinh@gmail.com",
-  instagramUrl: "https://www.instagram.com/hostal.oasis.the2/",
+  instagramUrl: "https://www.instagram.com/oasisthetraveler/",
   tiktokUrl: "https://www.tiktok.com/@hostal.oasis.the2",
   reviewsUrl: "https://www.google.com/maps/place/Hostal+Oasis+The+Traveler/@15.5845263,-89.9786597,17z/data=!4m8!3m7!1s0x8f61fa37b1ab88b7:0x917fbc6a0b8e98e9!8m2!3d15.5845263!4d-89.9764706!9m1!1b1!16s%2Fg%2F11b7blz3lb?entry=ttu"
 };
